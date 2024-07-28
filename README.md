@@ -1,5 +1,7 @@
 # Translittération Alphabetique vers Tifinagh
-
+<div align="center">
+<img src="iconTranslate.png" />
+</div>
 Bienvenue dans le dépôt GitHub de **Translittération Alphabetique vers Tifinagh** ! Ce projet fournit un outil simple pour convertir des lettres de l'alphabet latin en lettres Tifinagh, permettant ainsi une translittération facile pour les textes en langue Tifinagh.
 
 ## Table des matières
