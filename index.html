@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Letter Translittération En Tifinagh</title>
+	</head>
+<style type="text/css">
+body{
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: Lato;
+}
+
+.main{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.main div{
+	margin: 20px; 
+}
+textarea{
+	width: 100%;
+	height: 200px;
+
+	font-size: 25px;
+
+	transition: all 0.5s;
+}
+
+</style>
+	<body>
+		<div>
+			<a target="_blank" href="https://aittalla-corporation.web.app/"><img src="https://aittalla-corporation.web.app/data/media/icons/banner720x280.png"></a>
+		</div>
+		<div class="main">
+
+			<div>
+				<h2>Alphabet :</h2>
+				<textarea id="alphabet_text" onkeyup="translateAlphabetToTifinagh(this.value)"></textarea>
+			</div>
+			<div>
+				<h2>Tifinagh :</h2>
+				<textarea id="tifinagh_text"></textarea>
+			</div>
+		
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	
+// list de caractère alphabetiques
+let lettresAlphabetiques = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','D','H',"A",'R',"S","T","Z","U"];
+
+// list de caractère tifinagh
+let tifinagh_Letter = ["ⴰ","ⴱ","ⵛ","ⴷ","ⴻ","ⴼ","ⴳ","ⵀ","ⵉ","ⵊ","ⴽ","ⵍ","ⵎ","ⵏ","ⴵ","ⵒ","ⵇ","ⵔ","ⵙ","ⵜ","ⵓ","ⵠ","ⵡ","ⵅ","ⴴ","ⵣ","ⴹ","ⵃ",'ⵄ',"ⵕ","ⵚ","ⵟ","ⵥ","ⵂ"];
+
+function translateAlphabetToTifinagh(texte) {
+	let texteModifie = '';
+
+    // Parcourir chaque caractère dans le texte
+    for (let i = 0; i < texte.length; i++) {
+        let caractere = texte[i];
+        
+        // Vérifier si le caractère est dans le tableau des lettres à changer
+        if (lettresAlphabetiques.includes(caractere)) {
+            // Trouver l'index dans le tableau des lettres à changer
+            let index = lettresAlphabetiques.indexOf(caractere);
+            
+            // Remplacer par la lettre correspondante dans le tableau des lettres en ordre alphabétique
+            texteModifie += tifinagh_Letter[index];
+        } else {
+            // Conserver le caractère d'origine s'il ne doit pas être remplacé
+            texteModifie += caractere;
+        }
+    }
+
+	document.getElementById('tifinagh_text').value = texteModifie;
+    return texteModifie;
+}
+let texteOriginal = 'azul';
+document.getElementById('alphabet_text').value = 'azul';
+let texteTransforme = translateAlphabetToTifinagh(texteOriginal);
+
+console.log("Texte original :", texteOriginal);
+console.log("Texte transformé :", texteTransforme);
+</script>
